@@ -145,9 +145,9 @@ function UserProfile() {
         <div className="container_ cont_left">
           <h2>Связанные аккаунты</h2>
           <div className="user-info">
-            <p><strong>Github:</strong><strong className='font_purple'> <a href={socialLinks.links.github} target="_blank" rel="noopener noreferrer">{socialLinks.links.github}</a></strong></p>
-            <p><strong>Telegram:</strong><strong className='font_purple'> <a href={socialLinks.links.telegram} target="_blank" rel="noopener noreferrer">{socialLinks.links.telegram}</a></strong></p>
-            <p><strong>VK:</strong><strong className='font_purple'> <a href={socialLinks.links.vk} target="_blank" rel="noopener noreferrer">{socialLinks.links.vk}</a></strong></p>
+            <p><strong>Github:</strong><strong> <a className='font_purple' href={socialLinks.links.github} target="_blank" rel="noopener noreferrer">{socialLinks.links.github}</a></strong></p>
+            <p><strong>Telegram:</strong><strong> <a  className='font_purple' href={socialLinks.links.telegram} target="_blank" rel="noopener noreferrer">{socialLinks.links.telegram}</a></strong></p>
+            <p><strong>VK:</strong><strong> <a  className='font_purple' href={socialLinks.links.vk} target="_blank" rel="noopener noreferrer">{socialLinks.links.vk}</a></strong></p>
           </div>
         </div>
         <div className="user-orders container_ cont_left">
