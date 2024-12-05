@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './css/UserAccount.css'; // Убедитесь, что файл CSS существует
 
-function Order({ title, description, customer, status, deadline, price }) {
+function Order({ description, customer, status, deadline, price }) {
   return (
     <div className="order">
       <div>
@@ -17,9 +17,18 @@ function Order({ title, description, customer, status, deadline, price }) {
   );
 }
 
+class SocialLinks {
+  constructor() {
+    this.links = {
+      github: "https://github.com/Faso-main",
+      telegram: "https://t.me/Faso312",
+      vk: "https://vk.com/faso312"
+    };
+  }
+}
+
 function UserProfile() {
   const [activeTab, setActiveTab] = useState('orders'); // Состояние активной вкладки
-
   const user = {
     name: "Имя Фамилия",
     age: "19",
@@ -27,14 +36,14 @@ function UserProfile() {
     email: "faso.312@yandex.ru",
     orders: [
       {
-        description: "Какое-то очень очень очень очень очень очень очень очень очень очень очень очень очень очень очень длинное описание для задачи 1",
+        description: "Какое-то очень длинное описание для задачи 1",
         customer: "Клиент А",
         status: "Выполнен",
         deadline: "06.12.2024",
         price: "100000 ₽"
       },
       {
-        description: "Какое-то очень очень очень очень очень очень очень очень очень очень очень очень очень очень очень длинное описание для задачи 1",
+        description: "Какое-то очень длинное описание для задачи 2",
         customer: "Клиент Б",
         status: "В работе",
         deadline: "25.12.2024",
@@ -44,6 +53,23 @@ function UserProfile() {
     joinedYear: "2020",
     rating: 4,
     reviewsCount: 25,
+  };
+
+  // Обработчик ошибок для получения заказов
+  const getUserOrders = () => {
+    if (!user.orders || user.orders.length === 0) {
+      return "У вас нет выполненных заказов.";
+    }
+    return user.orders.map((order, index) => (
+      <Order 
+        key={index}
+        description={order.description}
+        customer={order.customer}
+        status={order.status}
+        deadline={order.deadline}
+        price={order.price}
+      />
+    ));
   };
 
   // Контент для резюме
@@ -69,6 +95,8 @@ function UserProfile() {
       <p>Есть опыт работы с [технологиями или методологиями], активно интересуюсь [темы интереса]. Готов работать в [тип работы или среды].</p>
     </div>
   );
+
+  const socialLinks = new SocialLinks();
 
   return (
     <div className="profile_container">
@@ -117,30 +145,17 @@ function UserProfile() {
         <div className="container_ cont_left">
           <h2>Связанные аккаунты</h2>
           <div className="user-info">
-            <p><strong>Github:</strong><strong className='font_purple'>   https://github.com/Faso-main</strong></p>
-            <p><strong>Telegram:</strong><strong className='font_purple'>  https://t.me/Faso312</strong></p>
-            <p><strong>VK:</strong><strong className='font_purple'>  https://vk.com/faso312</strong></p>
+            <p><strong>Github:</strong><strong className='font_purple'> <a href={socialLinks.links.github} target="_blank" rel="noopener noreferrer">{socialLinks.links.github}</a></strong></p>
+            <p><strong>Telegram:</strong><strong className='font_purple'> <a href={socialLinks.links.telegram} target="_blank" rel="noopener noreferrer">{socialLinks.links.telegram}</a></strong></p>
+            <p><strong>VK:</strong><strong className='font_purple'> <a href={socialLinks.links.vk} target="_blank" rel="noopener noreferrer">{socialLinks.links.vk}</a></strong></p>
           </div>
         </div>
         <div className="user-orders container_ cont_left">
           <h2>{activeTab === 'orders' ? 'Заказы' : 'Резюме'}</h2>
           {activeTab === 'orders' ? (
-            user.orders.length > 0 ? (
-              <div className="orders-container">
-                {user.orders.map((order, index) => (
-                  <Order 
-                    key={index}
-                    description={order.description}
-                    customer={order.customer}
-                    status={order.status}
-                    deadline={order.deadline}
-                    price={order.price}
-                  />
-                ))}
-              </div>
-            ) : (
-              <p>У вас нет выполненных заказов.</p>
-            )
+            <div className="orders-container">
+              {getUserOrders()}
+            </div>
           ) : (
             resumeContent // Показываем контент резюме если активная вкладка 'resume'
           )}
@@ -149,7 +164,5 @@ function UserProfile() {
     </div>
   );
 }
-
-
 
 export default UserProfile;
