@@ -1,0 +1,13 @@
+package io.hakaton.fsp.files.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class DocumentsList {
+    private String title;
+    private String url;
+}
