@@ -256,7 +256,7 @@
   .service_header_service {
     display: flex;
     justify-content: space-between; /* Разделяет элементы по краям контейнера */
-    align-items: center;
+    align-items: flex-end;
   }
 
   .reviewer-image {
