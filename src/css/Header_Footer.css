@@ -1,0 +1,77 @@
+.app-header {
+    background-color: #f6f5f7;
+    color: black;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Занять 100% ширины страницы */
+    position: fixed; /* Чтобы он оставался вверху при прокрутке */
+    top: 0; /* Позиционирование от верхней части страницы */
+    left: 0; /* Позиционирование от левой части страницы */
+    z-index: 1000; /* Убедитесь, что он находится над другими элементами */
+  }
+  
+  .app-header .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .app-header .navbar ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+  }
+  
+  .app-header .navbar a {
+    color: black;
+    text-decoration: none;
+  }
+  
+  .app-footer {
+    background-color: #f6f5f7;
+    color: black;
+    text-align: center;
+    padding: 10px;
+  }
+  
+/* src/components/Footer.css */
+.app-footer {
+    background-color: #f6f5f7;
+    color: black;
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: center;  /* Распределение колонок */
+    flex-wrap: wrap;                /* Поддержка разбиения на строки, если экран мал */
+  }
+  
+  .footer-column {
+    flex: 1;                        /* Каждая колонка занимает равное пространство */
+    margin: 0 10%;                /* Отступы между колонками */
+  }
+  
+  .footer-column h3 {
+    text-align: left;
+    margin-bottom: 10px;           /* Отступ для заголовка колонки */
+  }
+  
+  .footer-column p {
+    text-align: left;
+    margin: 3px 0;                 /* Отступы для элементов в колонке */
+  }
+  
+  .social-links {
+    margin-top: 15px;
+  }
+  
+  .social-links a {
+    color: black;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  

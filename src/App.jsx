@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import './css/UserAccount.css';
 
 
 function Order({ description, customer, status, deadline, price }) {
