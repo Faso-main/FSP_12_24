@@ -1,8 +1,7 @@
-@import 'fonts.css'; /* шрифты */
 @import 'container.css'; /* шрифты */
 
 .App {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Init', sans-serif;
   text-align: center;
 }
 
