@@ -1,0 +1,22 @@
+/* Notification.css */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 0.5s ease;
+    z-index: 2;
+  }
+  
+  .notification.success {
+    background-color: #4caf50; /* Зеленый для успеха */
+  }
+  
+  .notification.error {
+    background-color: #f44336; /* Красный для ошибки */
+  }
+  
+  

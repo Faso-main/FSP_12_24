@@ -63,6 +63,7 @@
 }
 
 .profile_container {
+    margin: 120px 0 0 0;
     display: flex;
     animation: fadeIn 0.5s ease-in-out; /* Плавное появление */
 }

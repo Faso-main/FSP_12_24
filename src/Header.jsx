@@ -2,18 +2,30 @@ import React, { useState } from 'react';
 import './css/Header_Footer.css';
 import arrowDown from './assets/img/Arrow_down.png'; 
 import logoImage from './assets/img/IT.png'; 
-import SignInForm from './SignIn'; 
-import Modal from './Modal'; // Импортируем модальное окно
+import SignInForm from './SignInForm'; 
+import Modal from './Modal'; 
 
-function Header() {
+function Header({ onLoginSuccess, onLogout }) {
   const [isCustomerDropdownOpen, setCustomerDropdownOpen] = useState(false);
   const [isExecutorDropdownOpen, setExecutorDropdownOpen] = useState(false);
   const [isSignInFormOpen, setSignInFormOpen] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
   const handleSignInClick = () => {
     setSignInFormOpen(true);
     setCustomerDropdownOpen(false); 
     setExecutorDropdownOpen(false); 
+  };
+
+  const handleLoginSuccess = () => {
+    setLoggedIn(true);
+    setSignInFormOpen(false);
+    onLoginSuccess();
+  };
+
+  const handleLogout = () => {
+    setLoggedIn(false);
+    onLogout();
   };
 
   return (
@@ -55,14 +67,20 @@ function Header() {
             )}
           </li>
           <li>
-            <button className="sign-in-button" onClick={handleSignInClick}>
-              Войти
-            </button>
+            {!isLoggedIn ? (
+              <button className="sign-in-button" onClick={handleSignInClick}>
+                Войти
+              </button>
+            ) : (
+              <button className="sign-out-button" onClick={handleLogout}>
+                Выйти
+              </button>
+            )}
           </li>
         </ul>
       </nav>
       <Modal isOpen={isSignInFormOpen} onClose={() => setSignInFormOpen(false)}>
-        <SignInForm onClose={() => setSignInFormOpen(false)} />
+        <SignInForm onLoginSuccess={handleLoginSuccess} />
       </Modal>
     </header>
   );

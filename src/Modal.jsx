@@ -1,6 +1,6 @@
 // src/components/Modal.jsx
 import React from 'react';
-import './css/Sing.css'; // Импортируем стили для модального окна
+import './css/SignAll.css'; // Импортируем стили для модального окна
 
 function Modal({ children, isOpen, onClose }) {
   if (!isOpen) return null; // Не рендерим модал, если isOpen равно false

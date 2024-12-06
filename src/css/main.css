@@ -1,6 +1,7 @@
 @import 'Container.css'; /* шрифты */
-@import 'Sing.css'; /* шрифты */
+@import 'SignAll.css'; /* шрифты */
 @import 'UserAccount.css'; /* шрифты */
+@import 'Notifications.css'; /* шрифты */
 
 .App {
   font-family: 'Init', sans-serif;
@@ -79,6 +80,7 @@ button.ghost {
 }
 
 form {
+  margin-top: 50px;
   background-color: #ffffff;
   display: flex;
   align-items: center;
