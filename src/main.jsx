@@ -4,7 +4,10 @@ import './css/App.css';
 import Header from './Header';
 import UserProfile from './UserProfile'; // Импорт профиля пользователя
 
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
 const Main = () => {
+
   const [isLoggedIn, setLoggedIn] = useState(false); // Состояние для отслеживания входа пользователя
   const [isFadingOut, setFadingOut] = useState(false); // Состояние дляFade Out анимации
 
@@ -280,3 +283,4 @@ const Main = () => {
     </div>
   );
 };
+

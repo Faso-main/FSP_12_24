@@ -5,6 +5,7 @@ import './css/App.css';
 import Header from './Header';
 import UserProfile from './UserProfile'; // Import user profile component
 
+
 const Main = () => {
   const [isLoggedIn, setLoggedIn] = useState(false); // State to track user login
   const [isFadingOut, setFadingOut] = useState(false); // State for fade-out animation
