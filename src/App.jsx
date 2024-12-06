@@ -1,18 +1,30 @@
+// Main.js
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import './css/App.css';
 import Header from './Header';
-import UserProfile from './UserProfile'; // Импорт профиля пользователя
+import UserProfile from './UserProfile'; // Import user profile component
 
 const Main = () => {
-  const [isLoggedIn, setLoggedIn] = useState(false); // Состояние для отслеживания входа пользователя
+  const [isLoggedIn, setLoggedIn] = useState(false); // State to track user login
+  const [isFadingOut, setFadingOut] = useState(false); // State for fade-out animation
 
   const handleLoginSuccess = () => {
-    setLoggedIn(true); // Устанавливаем состояние входа при успешной авторизации
+    if (!isLoggedIn) {
+      setFadingOut(true);
+      setTimeout(() => {
+        setLoggedIn(true);
+        setFadingOut(false);
+      }, 500); // Duration of the animation
+    }
   };
 
   const handleLogout = () => {
-    setLoggedIn(false); // Устанавливаем состояние выхода
+    setFadingOut(true);
+    setTimeout(() => {
+      setLoggedIn(false);
+      setFadingOut(false);
+    }, 500); // Duration of the animation
   };
 
   return (
@@ -21,9 +33,10 @@ const Main = () => {
         <title>exported project</title>
       </Helmet>
       <Header onLoginSuccess={handleLoginSuccess} onLogout={handleLogout} />
-      {/* Если пользователь не вошел, показываем основной контент */}
+      
+      {/* Show main content if user is not logged in */}
       {!isLoggedIn ? (
-        <div className="main-main">
+        <div className={`main-main ${isFadingOut ? 'fade-out' : 'fade-in'}`}>
           <img
             src="./src/external/ellipse11594-6s1x-1900h.png"
             alt="Ellipse11594"
@@ -260,7 +273,7 @@ const Main = () => {
           </div>
         </div>
       ) : (
-        // Если пользователь вошел, показываем личный кабинет
+        // If the user is logged in, show the user profile
         <UserProfile onLogout={handleLogout} />
       )}
     </div>

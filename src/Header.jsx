@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './css/Header_Footer.css';
 import arrowDown from './assets/img/Arrow_down.png'; 
 import logoImage from './assets/img/IT.png'; 
-import SignInForm from './SignInForm'; 
+import SignInForm from './SignInForm'; // Убедитесь, что путь к файлу правильный
 import Modal from './Modal'; 
 
 function Header({ onLoginSuccess, onLogout }) {
