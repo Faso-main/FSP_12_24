@@ -1,318 +1,317 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
 
+import { Helmet } from 'react-helmet'
+import './css/App.css'
 
-function Order({ description, customer, status, deadline, price }) {
+const Main = (props) => {
   return (
-    <div className="order">
-      <div>
-        <p><strong>Описание:</strong> {description}</p>
-      </div>
-      <div className='relation_flex justify_between'>
-        <p><strong>Статус:</strong> {status}</p>
-        <p><strong>Заказчик:</strong> {customer}</p>
-        <p><strong>Сумма:</strong> {price}</p>
-        <p><strong>Срок сдачи:</strong> {deadline}</p>
-      </div>
-    </div>
-  );
-}
-
-Order.propTypes = {
-  description: PropTypes.string.isRequired,
-  customer: PropTypes.string.isRequired,
-  status: PropTypes.string.isRequired,
-  deadline: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
-};
-
-function Review({ reviewText, reviewerName, date, rating }) {
-  return (
-    <div className="review">
-      <div className="service-header">
-        <img src="./src/assets/img/person_default.webp" alt="Reviewer" className="reviewer-image" />
-        <div className="review-description">
-          <p><strong>Отзыв:</strong> {reviewText}</p>
-          <p><strong>Автор:</strong> {reviewerName}</p>
-        </div>
-        <div className="review-details">
-          <p><strong>Дата:</strong> {date}</p>
-          <div className="user-rating">
-            {[...Array(5)].map((_, index) =>
-              index < Math.floor(rating) ?
-                <span key={index} className="star filled">★</span> :
-                <span key={index} className="star">☆</span>
-            )}
+    <div className="main-container">
+      <Helmet>
+        <title>exported project</title>
+      </Helmet>
+      <div className="main-main">
+        <img
+          src="./src/external/ellipse11594-6s1x-1900h.png"
+          alt="Ellipse11594"
+          className="main-ellipse1"
+        />
+        <div className="main-appbar">
+          <div className="main-logo">
+            <div className="main-minilogo">
+              <span className="main-text10">if</span>
+            </div>
+            <span className="main-text11">ItFreelancer</span>
           </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-Review.propTypes = {
-  reviewText: PropTypes.string.isRequired,
-  reviewerName: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
-};
-
-function SocialLinks() {
-  return {
-    github: "https://github.com/Faso-main",
-    telegram: "https://t.me/Faso312",
-    vk: "https://vk.com/faso312",
-  };
-}
-
-function UserProfile() {
-  const [activeTab, setActiveTab] = useState('orders');
-
-  const user = {
-    name: "Имя Фамилия",
-    age: "19",
-    phone: "+7 (902) 749-59-42",
-    email: "faso.312@yandex.ru",
-    balance: "Баланс: 50000 ₽",
-    orders: [
-      {
-        description: "Какое-то очень длинное описание для задачи 1",
-        customer: "Клиент А",
-        status: "Выполнен",
-        deadline: "06.12.2024",
-        price: "100000 ₽",
-      },
-      {
-        description: "Какое-то очень длинное описание для задачи 2",
-        customer: "Клиент Б",
-        status: "В работе",
-        deadline: "25.12.2024",
-        price: "200000 ₽",
-      },
-    ],
-    reviews: [
-      {
-        text: "Отличная работа, всё выполнено вовремя!",
-        name: "Клиент А",
-        date: "01.12.2024",
-        rating: 5,
-      },
-      {
-        text: "Рекомендую, высокий уровень профессионализма!",
-        name: "Клиент Б",
-        date: "15.11.2024",
-        rating: 4,
-      },
-    ],
-    transactions: [
-      {
-        type: "Вывод",
-        code: "2200 2220 2200 2202",
-        date: "01.12.2024",
-        amount: "-5000 ₽",
-      },
-      {
-        type: "Пополнение",
-        code: "2200 2220 2200 2201",
-        date: "15.11.2024",
-        amount: "+20000 ₽",
-      },
-    ],
-    services: [
-      {
-        name: "Услуга 1",
-        description: "Какое-то очень краткое описание для услуги которую исполнитель сделает",
-        price: "10000 ₽",
-        images: [
-          "./src/assets/img/offer1.jpg",
-          "./src/assets/img/offer2.jpg",
-          "./src/assets/img/offer3.jpg"
-        ],
-      },
-      {
-        name: "Услуга 2",
-        description: "Какое-то очень краткое описание для услуги которую исполнитель сделает",
-        price: "15000 ₽",
-        images: [
-          "./src/assets/img/offer1.jpg",
-          "./src/assets/img/offer2.jpg",
-          "./src/assets/img/offer3.jpg"
-        ],
-      },
-    ],
-    joinedYear: "2020",
-    rating: 4,
-    reviewsCount: 25,
-  };
-
-  const getUserOrders = () => (
-    user.orders.length > 0 ? user.orders.map((order, index) => (
-      <Order 
-        key={index}
-        {...order}
-      />
-    )) : <p>У вас нет выполненных заказов.</p>
-  );
-
-  const getUserReviews = () => (
-    user.reviews.length > 0 ? user.reviews.map((review, index) => (
-      <Review 
-        key={index}
-        reviewText={review.text}
-        reviewerName={review.name}
-        date={review.date}
-        rating={review.rating}
-      />
-    )) : <p>У вас нет отзывов.</p>
-  );
-
-  const renderWallet = () => (
-    <div>
-      <div className="container_ cont_left">
-        <h1 className='font_purple'>{user.balance}</h1>
-      </div>
-      <div className="container_ cont_left">
-        <div className="transactions">
-          <h2 className='margin_header'>Последние транзакции</h2>
-          {user.transactions.map((transaction, index) => (
-            <div key={index} className="transaction relation_flex">
-              <div className="transaction-icon">
-                <img className='trade_img' src={parseInt(transaction.amount) < 0 ? "./src/assets/img/perp2.png" : "./src/assets/img/perp3.png"} alt={transaction.type} />
+          <div className="main-rightmenu">
+            <div className="main-fastmenu">
+              <div className="main-frame3">
+                <span className="main-text12">Заказчику</span>
+                <img
+                  src="./src/external/image11129-50al-200h.png"
+                  alt="IMAGE11129"
+                  className="main-image11"
+                />
               </div>
-              <div style={{ flexGrow: 1 }}>
-                <p><strong>Тип операции:</strong> {transaction.type}</p>
-                <p><strong>Код операции:</strong> {transaction.code}</p>
-              </div>
-              <div className="transaction-details">
-                <p><strong>Сумма:</strong> {transaction.amount}</p>
-                <p><strong>Дата:</strong> {transaction.date}</p>
+              <div className="main-frame4">
+                <span className="main-text13">Исполнителю</span>
+                <img
+                  src="./src/external/image11132-4au-200h.png"
+                  alt="IMAGE11132"
+                  className="main-image12"
+                />
               </div>
             </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-
-  const renderUserProfile = () => (
-    <>
-      <div className="container_ cont_left">
-        <h2>Личный кабинет</h2>
-        <div className="user-info">
-          <p><strong>Возраст:</strong> <strong className='font_purple'>{user.age} лет</strong></p>
-          <p><strong>Телефон:</strong> <strong className='font_purple'>{user.phone}</strong></p>
-          <p><strong>Email:</strong> <strong className='font_purple'>{user.email}</strong></p>
-        </div>
-      </div>
-      <div className="container_ cont_left">
-        <h2>Связанные аккаунты</h2>
-        <div className="user-info">
-          {Object.entries(SocialLinks()).map(([key, link]) => (
-            <p key={key}><strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong> <strong><a className='font_purple' href={link} target="_blank" rel="noopener noreferrer">{link}</a></strong></p>
-          ))}
-        </div>
-      </div>
-    </>
-  );
-
-  const renderServices = () => (
-    <div className="container_ cont_left">
-      <h2>Мои услуги</h2>
-      <div className="services">
-        {user.services.map((service, index) => (
-          <div key={index} className="service">
-            <div className="service_header_service">
-              <h3 className="service-name">{service.name}</h3>
-              <p className="service-price"><strong>Цена:</strong> {service.price}</p>
-            </div>
-            <p>{service.description}</p>
-            <div className="service-images service-header">
-              {service.images.map((image, imgIndex) => (
-                <img className='service_img' key={imgIndex} src={image} alt={`Service ${index + 1} image ${imgIndex + 1}`} />
-              ))}
+            <div className="main-signin">
+              <span className="main-text14">Войти</span>
             </div>
           </div>
-        ))}
+        </div>
+        <div className="main-content1">
+          <div className="main-block1">
+            <div className="main-frame8">
+              <span className="main-text15">Ищите айти исполнителей?</span>
+              <span className="main-text16">
+                Нанимайте отличных фрилансеров быстро. ItFreelancer поможет вам
+                нанять фрилансеров в любой момент.
+              </span>
+              <div className="main-frame9">
+                <span className="main-text17">Найти специалиста</span>
+              </div>
+            </div>
+            <img
+              src="./src/external/image1550-xn03-800h.png"
+              alt="IMAGE1550"
+              className="main-image"
+            />
+          </div>
+          <div className="main-block2">
+            <div className="main-content2">
+              <span className="main-text18">Почему мы?</span>
+              <div className="main-frame19">
+                <span className="main-text19">
+                  <span className="main-text20">Экспертная база</span>
+                  <span className="main-text21">
+                    : Мы объединяем проверенных фрилансеров — от разработчиков и
+                    дизайнеров до аналитиков и инженеров.
+                  </span>
+                  <br></br>
+                  <span className="main-text23"></span>
+                  <br></br>
+                  <span className="main-text25">Удобство и прозрачность</span>
+                  <span className="main-text26">
+                    : Простая навигация, безопасные сделки и чёткие инструменты
+                    управления проектами.
+                  </span>
+                  <br></br>
+                  <span className="main-text28"></span>
+                  <span className="main-text29">Интеллектуальный подбор</span>
+                  <span className="main-text30">
+                    : Система сама предложит вам наиболее подходящих
+                    исполнителей.
+                  </span>
+                  <br></br>
+                  <span className="main-text32"></span>
+                  <br></br>
+                  <span className="main-text34">Эскроу-платежи</span>
+                  <span>
+                    : Ваши деньги в безопасности до завершения работы.
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div className="main-interactive">
+              <div className="main-frame33">
+                <div className="main-frame171">
+                  <span className="main-text36">500+</span>
+                  <span className="main-text37">Работадателей</span>
+                </div>
+              </div>
+              <div className="main-frame35">
+                <div className="main-frame18">
+                  <span className="main-text38">500+</span>
+                  <span className="main-text39">Задач опубликованно</span>
+                </div>
+              </div>
+              <div className="main-frame34">
+                <div className="main-frame172">
+                  <span className="main-text40">500+</span>
+                  <span className="main-text41">Исполнителей</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="main-block3">
+            <div className="main-start"></div>
+            <div className="main-step1">
+              <img
+                src="./src/external/image58110881819-kn6s-200w.png"
+                alt="IMAGE58110881819"
+                className="main-image58110881"
+              />
+              <span className="main-text42">Опишите свой проект</span>
+              <span className="main-text43">
+                Создайте заказ, укажите требования и сроки
+              </span>
+            </div>
+            <div className="main-step2">
+              <img
+                src="./src/external/image341936818110-f4yk-200h.png"
+                alt="IMAGE341936818110"
+                className="main-image34193681"
+              />
+              <span className="main-text44">Выберите исполнителя</span>
+              <span className="main-text45">
+                Найдите подходящего исполнителя по отзывам, рейтингу и портфолио
+              </span>
+            </div>
+            <div className="main-step3">
+              <img
+                src="./src/external/checked18111-5xa9-200w.png"
+                alt="checked18111"
+                className="main-checked1"
+              />
+              <span className="main-text46">Получите результат</span>
+              <span className="main-text47">
+                Платите только за выполненную работу
+              </span>
+            </div>
+            <div className="main-end"></div>
+          </div>
+          <div className="main-block4">
+            <div className="main-frame16">
+              <span className="main-text48">
+                Идеальное место как для заказчиков, так и для исполнителей
+              </span>
+              <div className="main-frame29">
+                <div className="main-frame27">
+                  <img
+                    src="./src/external/image38123-3rkc-500h.png"
+                    alt="IMAGE38123"
+                    className="main-image3"
+                  />
+                  <span className="main-text49">Для заказчика</span>
+                  <span className="main-text50">
+                    Найдите специалистов, которые помогут вам сократить расходы
+                    и реализовать проекты любой сложности.
+                  </span>
+                </div>
+                <div className="main-frame28">
+                  <img
+                    src="./src/external/image2869-p91j-500h.png"
+                    alt="IMAGE2869"
+                    className="main-image2"
+                  />
+                  <span className="main-text51">Для исполнителя</span>
+                  <span className="main-text52">
+                    Получайте интересные заказы, работайте с надёжными клиентами
+                    и развивайте свои навыки.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="main-block5">
+            <div className="main-line1">
+              <div className="main-category1">
+                <img
+                  src="./src/external/image91012867-9ycc-200h.png"
+                  alt="IMAGE91012867"
+                  className="main-image91012"
+                />
+                <span className="main-text53">Дизайн</span>
+                <span className="main-text54">
+                  <span>
+                    Веб-дизайн, Мобильный дизайн, Брендинг и логотипы,
+                  </span>
+                  <br></br>
+                  <span>Графический дизайн и другое</span>
+                </span>
+              </div>
+              <div className="main-category2">
+                <img
+                  src="./src/external/divcodingicon866-jdq-200h.png"
+                  alt="divcodingicon866"
+                  className="main-divcodingicon"
+                />
+                <span className="main-text58">Разработка</span>
+                <span className="main-text59">
+                  Веб-разработка, Разработка мобильных приложений, Разработка
+                  настольных приложений, Создание игр и другое
+                </span>
+              </div>
+              <div className="main-category3">
+                <img
+                  src="./src/external/image2562004865-6k66-200h.png"
+                  alt="IMAGE2562004865"
+                  className="main-image2562004"
+                />
+                <span className="main-text60">Тестирование</span>
+                <span className="main-text61">Сайты, Мобайл, Софт</span>
+              </div>
+            </div>
+            <div className="main-line2">
+              <div className="main-category4">
+                <img
+                  src="./src/external/image3780538864-mdcr-200h.png"
+                  alt="IMAGE3780538864"
+                  className="main-image3780538"
+                />
+                <span className="main-text62">Маркетинг</span>
+                <span className="main-text63">
+                  SMM, SEO, Контекстная реклама и другое
+                </span>
+              </div>
+              <div className="main-category5">
+                <img
+                  src="./src/external/freeiconai8637123863-xrir-200h.png"
+                  alt="freeiconai8637123863"
+                  className="main-freeiconai8637123"
+                />
+                <span className="main-text64">Искусственный интеллект</span>
+                <span className="main-text65">
+                  <span>
+                    Машинное обучение и глубокое обучение,Data engineering,
+                  </span>
+                  <br></br>
+                  <span>Компьютерное зрение и другое</span>
+                </span>
+              </div>
+              <div className="main-category6">
+                <img
+                  src="./src/external/image4230964862-drji-200h.png"
+                  alt="IMAGE4230964862"
+                  className="main-image4230964"
+                />
+                <span className="main-text69">Поддержка проекта</span>
+                <span className="main-text70">
+                  <span>Управление проектами,</span>
+                  <br></br>
+                  <span>Scrum-мастера и Agile-коучинг,</span>
+                  <br></br>
+                  <span>Написание требований,</span>
+                  <br></br>
+                  <span>UX-исследования и другое</span>
+                </span>
+              </div>
+            </div>
+            <div className="main-allcategories">
+              <button className="main-button">
+                <span className="main-text78">Все категории</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="main-bottom">
+          <div className="main-botmenu">
+            <div className="main-about">
+              <span className="main-text79">ItFreelancer</span>
+              <div className="main-frame251">
+                <span className="main-text80">О Сервисе</span>
+                <span className="main-text81">Услуги и цены</span>
+                <span className="main-text82">Контакты</span>
+              </div>
+            </div>
+            <div className="main-help">
+              <span className="main-text83">Помощь</span>
+              <div className="main-frame252">
+                <span className="main-text84">Для исполнителя</span>
+                <span className="main-text85">Для заказчика</span>
+                <span className="main-text86">Служба поддрежки</span>
+              </div>
+            </div>
+            <div className="main-documents">
+              <span className="main-text87">Документы</span>
+              <div className="main-frame253">
+                <span className="main-text88">Соглашение с пользователем</span>
+                <span className="main-text89">Правила оказания услуг</span>
+                <span className="main-text90">Политика конфиденциальности</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  );
-
-  return (
-    <div className="profile_container">
-      <div className="cont_user container_">
-        <div className="user-icon">
-          <img src="./src/assets/img/person_default.webp" alt="User Icon" />
-        </div>
-        <div className="user-details">
-          <h2>{user.name}</h2>
-          <p className='low_margin text_center'>На сервисе с {user.joinedYear}г.</p>
-          <div className="user-rating">
-            <span className='font_14'> ({user.reviewsCount} оценок)</span>
-            {[...Array(5)].map((_, index) =>
-              index < Math.floor(user.rating) ? 
-                <span key={index} className="star filled">★</span> : 
-                <span key={index} className="star">☆</span>
-            )}
-          </div>
-          <div className='inner_user_block'>
-            <p className='font_purple' onClick={() => setActiveTab('services')}>Мои услуги</p>
-            <p className='font_purple' onClick={() => setActiveTab('orders')}>Заказы</p>
-            <p className='font_purple' onClick={() => setActiveTab('resume')}>Резюме</p>
-            <p className='font_purple' onClick={() => setActiveTab('reviews')}>Мои отзывы</p>
-          </div>
-          <div className='inner_user_block'>
-            <p className='font_purple'>Уведомления</p>
-            <p className='font_purple'>Сообщения</p>
-          </div>
-          <div className='inner_user_block'>
-            <p className='font_purple' onClick={() => setActiveTab('wallet')}>Кошелек</p>
-          </div>
-          <div className='inner_user_block'>
-            <p className='font_purple'>Управление профилем</p>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        {activeTab === 'wallet' ? renderWallet() :
-         activeTab === 'services' ? renderServices() :
-         renderUserProfile()}
-
-        {activeTab !== 'wallet' && activeTab !== 'services' && (
-          <div className="container_ cont_left">
-            <h2>{activeTab === 'orders' ? 'Заказы' : activeTab === 'reviews' ? 'Мои отзывы' : 'Резюме'}</h2>
-            {activeTab === 'orders' ? (
-              <div className="orders-container">
-                {getUserOrders()}
-              </div>
-            ) : activeTab === 'reviews' ? (
-              <div className="reviews-container">
-                {getUserReviews()}
-              </div>
-            ) : (
-              <div>{renderResume()}</div>
-            )}
-          </div>
-        )}
-      </div>
-    </div>
-  );
+  )
 }
 
-function renderResume() {
-  return (
-    <div>
-      <p><strong>Имя:</strong> Имя Фамилия</p>
-      <p><strong>Контактная информация:</strong></p>
-      <p>Email: <strong>example@example.com</strong></p>
-      <p>Телефон: <strong>+7 (902) 749-59-42</strong></p>
-      <p>Город: <strong>Город</strong></p>
-      
-      <h3>Общее описание</h3>
-      <p>Я опытный [ваша профессия] с более чем [X лет] опытом работы в области [ваша сфера]. Обладаю навыками в [навыки]. Имею опыт работы с [технологии, инструменты].</p>
-      
-    </div>
-  );
-}
-
-export default UserProfile;
+export default Main

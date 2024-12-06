@@ -1,31 +1,19 @@
 // src/main.jsx
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client'; // Измените этот импорт
 import './css/main.css';
 import './css/Header_Footer.css';
+import Header from './Header.jsx';
 import Footer from './Footer.jsx';
-import UserAccount from './UserAccount.jsx';  // Импорт вашего компонента UserAccount
+import UserAccount from './UserAccount.jsx';  
+import App from './App.jsx';  
 
-function Header() {
-  return (
-    <header className="app-header">
-      <h1 className="logo">ItFreelanser</h1>
-      <nav className="navbar">
-        <ul>
-          <li><a href="#orders">Заказчику</a></li>
-          <li><a href="#reviews">Исполнителю</a></li>
-          <li><a href="#wallet">Войти</a></li>
-        </ul>
-      </nav>
-    </header>
-  );
-}
+// Создайте корень для вашего приложения
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
-ReactDOM.render(
-  <div>
-    <Header />
-    <UserAccount /> {/* Основной компонент пользователя */}
-    <Footer /> {/* Добавляем Footer */}
-  </div>,
-  document.getElementById('root')
+// Используйте метод render с созданным корнем
+root.render(
+  <React.StrictMode>
+    <App /> {/* Основной компонент пользователя */}
+  </React.StrictMode>
 );
