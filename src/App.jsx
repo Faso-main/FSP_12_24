@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './css/UserAccount.css';
 
+
 function Order({ description, customer, status, deadline, price }) {
   return (
     <div className="order">
@@ -310,6 +311,7 @@ function renderResume() {
       
       <h3>Общее описание</h3>
       <p>Я опытный [ваша профессия] с более чем [X лет] опытом работы в области [ваша сфера]. Обладаю навыками в [навыки]. Имею опыт работы с [технологии, инструменты].</p>
+      
     </div>
   );
 }
