@@ -1,9 +1,14 @@
-import React from 'react'
-
+import React, { useState } from 'react';
+import SignInForm from './SignIn';
 import { Helmet } from 'react-helmet'
 import './css/App.css'
 
 const Main = (props) => {
+  const [isSignInVisible, setSignInVisible] = useState(false);
+
+  const toggleSignInForm = () => {
+    setSignInVisible(!isSignInVisible);
+  };
   return (
     <div className="main-container">
       <Helmet>
@@ -15,37 +20,7 @@ const Main = (props) => {
           alt="Ellipse11594"
           className="main-ellipse1"
         />
-        <div className="main-appbar">
-          <div className="main-logo">
-            <div className="main-minilogo">
-              <span className="main-text10">if</span>
-            </div>
-            <span className="main-text11">ItFreelancer</span>
-          </div>
-          <div className="main-rightmenu">
-            <div className="main-fastmenu">
-              <div className="main-frame3">
-                <span className="main-text12">Заказчику</span>
-                <img
-                  src="./src/external/image11129-50al-200h.png"
-                  alt="IMAGE11129"
-                  className="main-image11"
-                />
-              </div>
-              <div className="main-frame4">
-                <span className="main-text13">Исполнителю</span>
-                <img
-                  src="./src/external/image11132-4au-200h.png"
-                  alt="IMAGE11132"
-                  className="main-image12"
-                />
-              </div>
-            </div>
-            <div className="main-signin">
-              <span className="main-text14">Войти</span>
-            </div>
-          </div>
-        </div>
+    
         <div className="main-content1">
           <div className="main-block1">
             <div className="main-frame8">
@@ -278,34 +253,6 @@ const Main = (props) => {
               <button className="main-button">
                 <span className="main-text78">Все категории</span>
               </button>
-            </div>
-          </div>
-        </div>
-        <div className="main-bottom">
-          <div className="main-botmenu">
-            <div className="main-about">
-              <span className="main-text79">ItFreelancer</span>
-              <div className="main-frame251">
-                <span className="main-text80">О Сервисе</span>
-                <span className="main-text81">Услуги и цены</span>
-                <span className="main-text82">Контакты</span>
-              </div>
-            </div>
-            <div className="main-help">
-              <span className="main-text83">Помощь</span>
-              <div className="main-frame252">
-                <span className="main-text84">Для исполнителя</span>
-                <span className="main-text85">Для заказчика</span>
-                <span className="main-text86">Служба поддрежки</span>
-              </div>
-            </div>
-            <div className="main-documents">
-              <span className="main-text87">Документы</span>
-              <div className="main-frame253">
-                <span className="main-text88">Соглашение с пользователем</span>
-                <span className="main-text89">Правила оказания услуг</span>
-                <span className="main-text90">Политика конфиденциальности</span>
-              </div>
             </div>
           </div>
         </div>

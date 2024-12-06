@@ -1,4 +1,5 @@
-@import 'container.css'; /* шрифты */
+@import 'Container.css'; /* шрифты */
+@import 'Sing.css'; /* шрифты */
 @import 'UserAccount.css'; /* шрифты */
 
 .App {
@@ -41,7 +42,7 @@ p {
 }
 
 span {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 a {

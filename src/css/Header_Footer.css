@@ -1,6 +1,7 @@
-/* src/components/Header.css */
+/* src/components/Header_Footer.css */
+
 .app-header {
-    background-color: #f6f5f7;
+    background-color: white;
     color: black;
     padding: 20px;
     display: flex;
@@ -11,19 +12,26 @@
     top: 0;
     left: 0;
     z-index: 1000;
+
 }
 
+.footer_logo{
+    height: 40px;
+    width: 40px;
+}
 
 .app-header .logo {
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 26px;
+    font-weight: bolder;
 }
 
 .app-header .navbar ul {
     list-style: none;
     padding: 0;
     display: flex;
-    gap: 15px;
+    align-items: center;
+    gap: 10px;
+    margin-right: 130px;
 }
 
 .app-header .navbar a {
@@ -40,13 +48,13 @@
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #f6f5f7;
+    background-color: white;
     border: 1px solid #ccc;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     padding: 10px 0;
     display: flex;
     flex-direction: column;
-    z-index: 1001; /* Расположить выше других элементов */
+    z-index: 1001; /* Above other elements */
 }
 
 .dropdown-menu li {
@@ -55,63 +63,75 @@
 
 .dropdown-menu li a {
     color: black;
-    display: block; /* Делаем ссылку блочным элементом для полной доступности */
+    display: block;
 }
 
 .dropdown-arrow {
-    width: 10px; /* Задайте нужный размер стрелки */
-    margin-left: 5px; /* Отступ между текстом и стрелкой */
+    width: 10px;
+    margin-left: 5px;
+}
+
+.dropdown-title {
+    font-size: 18px; /* Увеличенный размер шрифта */
+    font-weight: bold; /* Жирный шрифт */
 }
 
 .dropdown-menu li:hover {
-    background-color: #e0e0e0; /* Подсветка наводя мышь */
+    background-color: #e0e0e0;
 }
 
+/* Кнопка "Войти" */
+.sign-in-button {
+    background-color: #8e44ad; /* Фиолетовый цвет */
+    color: white; /* Белый текст */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
 
-  .app-footer {
-    background-color: #f6f5f7;
-    color: black;
-    text-align: center;
-    padding: 10px;
-  }
-  
-/* src/components/Footer.css */
+/* Styles for Footer */
 .app-footer {
-    background-color: #f6f5f7;
+    background-color: white;
     color: black;
     text-align: center;
     padding: 20px 0;
-  }
-  
-  .footer-content {
+    position: relative; /* Ensure it sits below content */
+}
+
+.footer-content {
     display: flex;
-    justify-content: center;  /* Распределение колонок */
-    flex-wrap: wrap;                /* Поддержка разбиения на строки, если экран мал */
-  }
-  
-  .footer-column {
-    flex: 1;                        /* Каждая колонка занимает равное пространство */
-    margin: 0 10%;                /* Отступы между колонками */
-  }
-  
-  .footer-column h3 {
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.footer-column {
+    flex: 1;
+    margin: 0 10%;
+}
+
+.footer-column h3 {
     text-align: left;
-    margin-bottom: 10px;           /* Отступ для заголовка колонки */
-  }
-  
-  .footer-column p {
+    margin-bottom: 10px;
+}
+
+.footer-column p {
     font-size: 14px;
     text-align: left;
-    margin: 3px 0;                 /* Отступы для элементов в колонке */
-  }
-  
-  .social-links {
-    margin-top: 15px;
-  }
-  
-  .social-links a {
-    color: black;
-    text-decoration: none;
-    margin: 0 10px;
-  }
-  
+    margin: 3px 0;
+}
+
+/* Body to handle spacing between header and footer */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure full height */
+    margin: 0; /* Reset margin */
+}
+
+.wrapper {
+    flex: 1; /* Allows content area to grow */
+    padding-top: 80px; /* Space for header */
+}
+
+/* Добавьте stylings для формы, если нужно */

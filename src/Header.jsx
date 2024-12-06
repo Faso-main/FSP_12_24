@@ -1,16 +1,27 @@
-// src/components/Header.jsx
 import React, { useState } from 'react';
 import './css/Header_Footer.css';
-import './css/UserAccount.css';
-import arrowDown from './assets/img/Arrow_down.png'; // Импортируем изображение стрелки
+import arrowDown from './assets/img/Arrow_down.png'; 
+import logoImage from './assets/img/IT.png'; 
+import SignInForm from './SignInForm'; 
+import Modal from './Modal'; // Импортируем модальное окно
 
 function Header() {
   const [isCustomerDropdownOpen, setCustomerDropdownOpen] = useState(false);
   const [isExecutorDropdownOpen, setExecutorDropdownOpen] = useState(false);
+  const [isSignInFormOpen, setSignInFormOpen] = useState(false);
+
+  const handleSignInClick = () => {
+    setSignInFormOpen(true);
+    setCustomerDropdownOpen(false); 
+    setExecutorDropdownOpen(false); 
+  };
 
   return (
     <header className="app-header">
-      <h1 className="logo">ItFreelanser</h1>
+      <div style={{ marginLeft: '10%' }} className='relation_flex'>
+        <img src={logoImage} alt="Logo" className="footer_logo" style={{ marginLeft: '10%' }} />
+        <span className="font_header">ItFreelanser</span>
+      </div>
       <nav className="navbar">
         <ul>
           <li>
@@ -18,7 +29,7 @@ function Header() {
               className="dropdown" 
               onClick={() => setCustomerDropdownOpen(!isCustomerDropdownOpen)}
             >
-              <span>Заказчик</span>
+              <span className="dropdown-title">Заказчик</span>
               <img src={arrowDown} alt="Arrow Down" className="dropdown-arrow" />
             </div>
             {isCustomerDropdownOpen && (
@@ -33,7 +44,7 @@ function Header() {
               className="dropdown" 
               onClick={() => setExecutorDropdownOpen(!isExecutorDropdownOpen)}
             >
-              <span>Исполнитель</span>
+              <span className="dropdown-title">Исполнитель</span>
               <img src={arrowDown} alt="Arrow Down" className="dropdown-arrow" />
             </div>
             {isExecutorDropdownOpen && (
@@ -43,9 +54,16 @@ function Header() {
               </ul>
             )}
           </li>
-          <li><a href="#wallet">Кошелек</a></li>
+          <li>
+            <button className="sign-in-button" onClick={handleSignInClick}>
+              Войти
+            </button>
+          </li>
         </ul>
       </nav>
+      <Modal isOpen={isSignInFormOpen} onClose={() => setSignInFormOpen(false)}>
+        <SignInForm onClose={() => setSignInFormOpen(false)} />
+      </Modal>
     </header>
   );
 }

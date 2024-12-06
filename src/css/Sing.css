@@ -1,0 +1,54 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Затемняем задний фон */
+    z-index: 1000; /* Заставляем форму быть поверх всего */
+  }
+
+  .sign-in-container form {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+
+  /* src/components/Modal.css */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Затемняем фон */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Слой выше всего */
+  }
+  
+  .modal-content {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    width: 400px;
+    height: 400px;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  

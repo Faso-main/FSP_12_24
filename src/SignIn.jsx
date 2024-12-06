@@ -1,6 +1,6 @@
 import React from "react";
 
-function SignInForm() {
+function SignInForm({ onClose }) { // Добавляем onClose в качестве пропса
   const [state, setState] = React.useState({
     email: "",
     password: "",
@@ -16,21 +16,19 @@ function SignInForm() {
 
   const handleOnSubmit = (evt) => {
     evt.preventDefault();
-
     const { email, password } = state;
     alert(`Вы вошли, используя email: ${email} и пароль: ${password}`);
-
     setState({
       email: "",
       password: "",
     });
+    onClose(); // Закрываем форму после успешной авторизации
   };
 
   return (
     <div className="form-container sign-in-container">
       <form onSubmit={handleOnSubmit}>
         <h1>Войти</h1>
-
         <span>или используйте свои личные данные</span>
         <input
           type="email"
